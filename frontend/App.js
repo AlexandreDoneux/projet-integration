@@ -1,4 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
+import React, {Component} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import RNBluetoothClassic, {
@@ -16,20 +17,46 @@ import { Button } from 'react-native';
 
 class BluetoothOn extends React.Component {
 
+  constructor(props){
+    super(props)
+    this.state = {
+        enabled : false
+    }
+    this.testBluetoothEnabled = this.testBluetoothEnabled.bind(this);
+}
+
   async testBluetoothEnabled(){
       try {
-          await enabled = RNBluetoothClassic.isBluetoothEnabled();
+          enabled = await RNBluetoothClassic.isBluetoothEnabled();
+          //enabled = true;
           this.setState({enabled});
+          alert(enabled);
       } catch (err) {
-          // Handle accordingly
+        console.log(err);
+          alert(err);
       }
   }
+
+// deux manières : utiliser une fonction félchée (comme ici en bas) ou bind (dans constructor)
+/*
+testBluetoothEnabled = async () => {
+      try {
+          //await enabled = RNBluetoothClassic.isBluetoothEnabled();
+          enabled = true;
+          this.setState({enabled});
+          alert(enabled);
+      } catch (err) {
+        console.log(err);
+          alert(err);
+      }
+  }
+*/
 
 
 render() {
   return (
     <Button 
-    onPress={this.testBluetoothEnabled()}
+    onPress={this.testBluetoothEnabled}
     title="Teste si le bluetooth est allumé"
     color="#f00"
     />
@@ -49,11 +76,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  img: {
-    width: '80%',
-    height: '65%',
-    marginBottom: '5%'
-  }
+  
 });
 
 
