@@ -34,6 +34,9 @@
       "eas": {
         "projectId": "f83c2b3a-f868-4a3b-81ff-eec35cbefb58"
       }
-    }
+    },
+    "plugins": [
+      "with-rn-bluetooth-classic"
+    ]
   }
 }

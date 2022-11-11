@@ -1,65 +1,45 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
+import RNBluetoothClassic, {
+  BluetoothDevice
+} from 'react-native-bluetooth-classic';
+
+
+
 //-------------------------------------------------------------------------------------------------------------------------------------
 //Importations faites
-import { Button,Image } from 'react-native';
-import { useState,useEffect } from 'react';
-//-------------------------------------------------------------------------------------------------------------------------------------
-
-
-export default function App() {
-
+import { Button } from 'react-native';
 
 //-------------------------------------------------------------------------------------------------------------------------------------
-  //Fonctions ajoutées
-  function fonctionTest(){
-    console.log("Ceci est un test")
+
+
+class BluetoothOn extends React.Component {
+
+  async testBluetoothEnabled(){
+      try {
+          await enabled = RNBluetoothClassic.isBluetoothEnabled();
+          this.setState({enabled});
+      } catch (err) {
+          // Handle accordingly
+      }
   }
 
-  useEffect(() => {
-    test()
-  }, [])
 
-//-------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-//-------------------------------------------------------------------------------------------------------------------------------------
-  //Variables ajoutées
-  const test = () => {
-    fetch('https://aws.random.cat/meow')
-    .then((res) => {
-      return res.json()
-    }).then((data) => {
-      setImg(data.file)
-      //console.log(img)
-    })
-  }
-
-  const [img, setImg] = useState(' ')
-//-------------------------------------------------------------------------------------------------------------------------------------
-
-
-//-------------------------------------------------------------------------------------------------------------------------------------
-  //Corps de l'App
+render() {
   return (
-    <View style={styles.container}>
-      <Image
-        source={{uri: img}}
-        style={styles.img}
-      /> 
-
-      <Button 
-      onPress={test}
-      title="Nouveau chat ta mère"
-      color="#f00"
-      /> 
-
-      <StatusBar style="auto" />
-    </View>
+    <Button 
+    onPress={this.testBluetoothEnabled()}
+    title="Teste si le bluetooth est allumé"
+    color="#f00"
+    />
   );
 }
+}
+
+
+
+
 //-------------------------------------------------------------------------------------------------------------------------------------
 
 const styles = StyleSheet.create({
@@ -75,3 +55,7 @@ const styles = StyleSheet.create({
     marginBottom: '5%'
   }
 });
+
+
+
+export default BluetoothOn;
