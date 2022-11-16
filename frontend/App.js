@@ -57,7 +57,7 @@ render() {
   return (
     <Button 
     onPress={this.testBluetoothEnabled}
-    title="Teste si le bluetooth est allumé"
+    title="Teste si le bluetooth est allumé ahahhahahhah"
     color="#f00"
     />
   );
