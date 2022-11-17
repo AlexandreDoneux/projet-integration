@@ -1,22 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
-import RNBluetoothClassic, {
-  BluetoothDevice
-} from 'react-native-bluetooth-classic';
-
-import BoutonScanBluetooth from './Components/BoutonScanBluetooth';
 
 
-//-------------------------------------------------------------------------------------------------------------------------------------
-//Importations faites
-import { Button } from 'react-native';
-
-//-------------------------------------------------------------------------------------------------------------------------------------
+import BoutonsBloc from './Components/BoutonsBloc';
 
 
-class BluetoothOn extends React.Component {
+
+class BluetoothOn extends Component {
 
   constructor(props){
     super(props)
@@ -30,7 +19,9 @@ class BluetoothOn extends React.Component {
 
 render() {
   return (
-    <BoutonScanBluetooth></BoutonScanBluetooth>
+    <BoutonsBloc/>
+    
+
   );
 }
 }
