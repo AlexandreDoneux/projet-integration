@@ -29,9 +29,13 @@ digitalWrite(ledTest, LOW);
 
 
 void loop() {
+  Serial.print(0);
+Serial.print(" ");
+Serial.print(1000);
+Serial.print(" ");
 
   // Mis en commentaire suite au test 
-  /*
+  
   int readValue = analogRead(A3);
 
   Serial.println(readValue);
@@ -45,7 +49,7 @@ void loop() {
     digitalWrite(ledTest, LOW);
 
   }
-  */
+  
 
   
 
@@ -60,6 +64,7 @@ void loop() {
       digitalWrite(ledTest, LOW);
     }
   }
+  
 
   
 }
